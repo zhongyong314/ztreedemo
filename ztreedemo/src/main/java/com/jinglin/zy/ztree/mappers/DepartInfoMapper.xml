@@ -3,6 +3,27 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jinglin.zy.ztree.dao.imp.DepartInfoImp">
-	
-	
+	<select id="getmodel" resultType="DepartInfo">
+	   select * from departinfo where departid=#{id}
+	</select>
+	<select id="getlist" resultType="DepartInfo">
+	   select * from departinfo
+	</select>
+	<select id="getlistbyparam" resultType="DepartInfo" parameterType="DepartInfo">
+	   select * from departinfo
+	   <where>
+	      <if test="departid!=null">
+	       and  departid=#{departid}
+	      </if>
+	      <if test="departname!=null">
+	       and departname=#{departname}
+	      </if>
+	      <if test="parentdepid!=null">
+	       and parentdepid=#{parentdepid}
+	      </if>
+	      <if test="remark!=null">
+	       and remark=#{remark}
+	      </if>
+	   </where>
+	</select>
 </mapper> 
